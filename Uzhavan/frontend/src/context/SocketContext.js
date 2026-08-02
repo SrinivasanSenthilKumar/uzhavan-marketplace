@@ -1,0 +1,51 @@
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { io } from 'socket.io-client';
+import { useAuth } from './AuthContext';
+
+const SocketContext = createContext();
+
+export const SocketProvider = ({ children }) => {
+  const { user } = useAuth();
+  const socketRef = useRef(null);
+  const [connected, setConnected] = useState(false);
+  const [incomingCall, setIncomingCall] = useState(null); // { callerId, offer, callerName }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!user || !token) {
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+        socketRef.current = null;
+      }
+      return;
+    }
+
+    const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000', {
+      auth: { token }
+    });
+
+    socket.on('connect', () => setConnected(true));
+    socket.on('disconnect', () => setConnected(false));
+    socket.on('call:incoming', (data) => setIncomingCall(data));
+
+    socketRef.current = socket;
+
+    return () => {
+      socket.disconnect();
+      socketRef.current = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?._id]);
+
+  const clearIncomingCall = () => setIncomingCall(null);
+
+  return (
+    <SocketContext.Provider
+      value={{ socket: socketRef.current, connected, incomingCall, clearIncomingCall }}
+    >
+      {children}
+    </SocketContext.Provider>
+  );
+};
+
+export const useSocket = () => useContext(SocketContext);

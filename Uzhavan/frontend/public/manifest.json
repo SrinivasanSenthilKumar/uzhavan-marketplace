@@ -1,0 +1,9 @@
+{
+  "short_name": "TN Farmer Market",
+  "name": "Tamil Nadu Farmer Marketplace",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2e7d32",
+  "background_color": "#ffffff"
+}
