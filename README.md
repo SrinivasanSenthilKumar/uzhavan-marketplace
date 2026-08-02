@@ -88,11 +88,11 @@ Create a folder named **screenshots** and add your application images.
 
 | Home Page | Farmer Dashboard |
 |------------|-----------------|
-| ![](Uzhavan/Screenshots/home.png) | ![](Uzhavan/Screenshots/dashboard.png) |
+| ![](Uzhavan/Screenshots/HomePage.png) | ![](Uzhavan/Screenshots/FarmerDashboard.png) |
 
 | Product Page | Admin Dashboard |
 |---------------|----------------|
-| ![](Uzhavan/Screenshots/product.png) | ![](Uzhavan/Screenshots/admin.png) |
+| ![](Uzhavan/Screenshots/Product.png) | ![](Uzhavan/Screenshots/AdminDashboard.png) |
 
 ---
 
