@@ -314,8 +314,11 @@ Supports all **38 districts of Tamil Nadu** for product discovery and filtering.
 
 ---
 
-# 🌐 Demo Video
+## 🎥 Project Demo
 
+Watch the complete demonstration here:
+
+https://youtu.be/vyLFaXm49RQ
 
 ---
 
